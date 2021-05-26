@@ -100,30 +100,6 @@ def FK(theta1, theta2, theta3):
     return x, y, z
 
 
-def render_frame(angle):
-
-    x, y, z = FK(theta1, theta2, theta3)
-
-    fig = plt.figure()
-    ax = Axes3D(fig)
-    ax.set_xlim([0, 0.3])
-    ax.set_ylim([0, 0.3])
-    ax.set_zlim([-0.15, 0.15])
-    ax.set_box_aspect([1,1,1])
-
-    ax.plot(x, y, z, "o-", color="#00aa00", ms=4, mew=0.5)
-    ax.view_init(30, angle)
-    plt.close()
-
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
-    ax.set_zlabel('z')
-
-    buf = BytesIO()
-    fig.savefig(buf, bbox_inches='tight', pad_inches=0.0)
-
-    return Image.open(buf)
-
 
 # Position command value
 x_ref =  0.25 #[m]
